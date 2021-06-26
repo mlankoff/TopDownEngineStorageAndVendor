@@ -129,7 +129,7 @@ namespace MoreMountains.InventoryEngine
         /// <summary>
         /// Setup storage display to fit storage inventory size
         /// </summary>
-        protected virtual void SetupStorageDispaly()
+        protected virtual void SetupStorageDisplay()
         {
             storageInventoryDisplay.TargetInventoryName = _inventoryName;
             storageInventoryDisplay.NumberOfColumns = storageColumns;
@@ -289,7 +289,7 @@ namespace MoreMountains.InventoryEngine
             _storageInventory.LoadSavedInventory();
             storageInventoryDisplay.gameObject.SetActive(true);
             AddStorageDisplayToMainDisplay();
-            SetupStorageDispaly();
+            SetupStorageDisplay();
             PlayOpenAnimation();
             storageInventoryDisplay.SetTargetInventory(_storageInventory);
             MMInventoryEvent.Trigger(MMInventoryEventType.Redraw, null, _storageInventory.name, null, 0, 0);

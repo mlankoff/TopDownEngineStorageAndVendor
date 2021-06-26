@@ -1,7 +1,4 @@
 ﻿using MoreMountains.Tools;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 
 namespace MoreMountains.InventoryEngine
 {
@@ -15,4 +12,3 @@ namespace MoreMountains.InventoryEngine
         public int Quantity;
     }
 }
-

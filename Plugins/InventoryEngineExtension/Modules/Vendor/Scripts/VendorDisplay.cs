@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
+using MoreMountains.Tools;
 using UnityEngine;
+using UnityEngine.UI;
 
 
 namespace MoreMountains.InventoryEngine
@@ -52,6 +54,17 @@ namespace MoreMountains.InventoryEngine
         public virtual void SetTargetInventory(Inventory targetInventory)
         {
             _targetInventory = targetInventory;
+        }
+
+        protected override void RedrawInventoryDisplay()
+        {
+            base.RedrawInventoryDisplay();
+            foreach (var slot in SlotContainer)
+            {
+                slot.MMGetComponentNoAlloc<Image>().enabled = true;
+                slot.MMGetComponentNoAlloc<InventorySlot>().enabled = true;
+                slot.MMGetComponentNoAlloc<CanvasGroup>().enabled = true;
+            }
         }
 
         protected override void Awake()
