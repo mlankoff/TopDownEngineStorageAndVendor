@@ -1,5 +1,6 @@
 using System;
 using System.Linq;
+using MoreMountains.Tools;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -81,6 +82,7 @@ namespace MoreMountains.InventoryEngine
         protected virtual void Awake()
         {
             _itemDetails = FindObjectOfType<InventoryDetailsExtended>();
+            CurrentlySelectedInventorySlot = TargetInventoryDisplay.GetComponentInChildren<InventorySlot>();
         }
 
         /// <summary>
@@ -97,7 +99,7 @@ namespace MoreMountains.InventoryEngine
             if (Input.GetKeyDown(ToggleInventoryKey) || Input.GetKeyDown(ToggleInventoryAltKey))
             {
                 // if the inventory is not open
-                if (!InventoryOpen)
+                if (!InventoryIsOpen)
                 {
                     _isPressed = false;
                     OpenInventory();
@@ -112,7 +114,7 @@ namespace MoreMountains.InventoryEngine
             }
 
             // if we've only authorized input when open, and if the inventory is currently closed, we do nothing and exit
-            if (InputOnlyWhenOpen && !InventoryOpen)
+            if (InputOnlyWhenOpen && !InventoryIsOpen)
             {
                 return;
             }
@@ -814,7 +816,7 @@ namespace MoreMountains.InventoryEngine
             {
                 openedVendor.vendorInventoryDisplay.gameObject.SetActive(false);
                 openedVendor.vendorInventoryRollBackDisplay.gameObject.SetActive(true);
-                openedVendor.SetupVendorRollBackDispaly();
+                openedVendor.SetupVendorRollBackDisplay();
                 openedVendor.AddVendorRollBackDisplayToMainDisplay();
                 openedVendor.isVendorRollBackOpen = true;
             }
@@ -838,7 +840,7 @@ namespace MoreMountains.InventoryEngine
             {
                 openedVendor.vendorInventoryRollBackDisplay.gameObject.SetActive(false);
                 openedVendor.vendorInventoryDisplay.gameObject.SetActive(true);
-                openedVendor.SetupVendorDispaly();
+                openedVendor.SetupVendorDisplay();
                 openedVendor.AddVendorDisplayToMainDisplay();
                 openedVendor.isVendorRollBackOpen = false;
             }

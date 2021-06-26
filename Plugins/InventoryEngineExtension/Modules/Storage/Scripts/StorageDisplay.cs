@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
-
+using MoreMountains.Tools;
+using UnityEngine.UI;
 
 namespace MoreMountains.InventoryEngine
 {
@@ -44,6 +45,17 @@ namespace MoreMountains.InventoryEngine
                 ResizeInventoryTitle();
             }
             RedrawInventoryDisplay();
+        }
+        
+        protected override void RedrawInventoryDisplay()
+        {
+            base.RedrawInventoryDisplay();
+            foreach (var slot in SlotContainer)
+            {
+                slot.MMGetComponentNoAlloc<Image>().enabled = true;
+                slot.MMGetComponentNoAlloc<InventorySlot>().enabled = true;
+                slot.MMGetComponentNoAlloc<CanvasGroup>().enabled = true;
+            }
         }
 
         /// <summary>

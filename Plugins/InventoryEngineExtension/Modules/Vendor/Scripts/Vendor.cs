@@ -278,7 +278,7 @@ namespace MoreMountains.InventoryEngine
         /// <summary>
         /// Setup vendor display to fit vendor inventory size
         /// </summary>
-        public virtual void SetupVendorDispaly()
+        public virtual void SetupVendorDisplay()
         {
             vendorInventoryDisplay.TargetInventoryName = _inventoryName;
             vendorInventoryDisplay.NumberOfColumns = vendorColumns;
@@ -293,7 +293,7 @@ namespace MoreMountains.InventoryEngine
         /// <summary>
         /// Setup vendor roll back display to fit vendor roll back inventory size
         /// </summary>
-        public virtual void SetupVendorRollBackDispaly()
+        public virtual void SetupVendorRollBackDisplay()
         {
             vendorInventoryRollBackDisplay.TargetInventoryName = _inventoryRollBackName;
             vendorInventoryRollBackDisplay.NumberOfColumns = vendorRollBackColumns;
@@ -447,7 +447,7 @@ namespace MoreMountains.InventoryEngine
             }
             vendorInventory.LoadSavedInventory();
             vendorInventoryDisplay.gameObject.SetActive(true);
-            SetupVendorDispaly();
+            SetupVendorDisplay();
             vendorInventoryDisplay.SetTargetInventory(vendorInventory);
             MMInventoryEvent.Trigger(MMInventoryEventType.Redraw, null, vendorInventory.name, null, 0, 0);
             AddVendorDisplayToMainDisplay();
